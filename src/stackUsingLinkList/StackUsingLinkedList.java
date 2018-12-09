@@ -1,26 +1,25 @@
 package stackUsingLinkList;
 
-import java.util.LinkedList;
+import java.util.Iterator;
 
-public class StackUsingLinkedList {
+public class StackUsingLinkedList<Item> implements Iterable<Item> {
 
-    private LinkedList<Node> mLinkedList;
     private Node firstNode = null;
 
 //    public StackUsingLinkedList() {
 //        mLinkedList = new LinkedList<>();
 //    }
 
-    public void push(String item) {
+    public void push(Item item) {
         Node temp = firstNode;
 
         firstNode = new Node();
-        firstNode.message = item;
+        firstNode.item = item;
         firstNode.next = temp;
     }
 
-    public String pop() {
-        String item = firstNode.message;
+    public Item pop() {
+        Item item = firstNode.item;
         firstNode = firstNode.next;
         return item;
     }
@@ -41,9 +40,30 @@ public class StackUsingLinkedList {
         return size;
     }
 
+    @Override
+    public Iterator<Item> iterator() {
+        return new ListIterator();
+    }
+
+    private class ListIterator implements Iterator<Item> {
+
+        private Node current = firstNode;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Item next() {
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+    }
 
     private class Node {
-        String message;
+        Item item;
         Node next;
     }
 }
