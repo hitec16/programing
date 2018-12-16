@@ -23,11 +23,11 @@ public class MergeSort {
         int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++) {
 
-            if (i > mid) a[k] = aux[j++];
+            if (i > mid) a[k] = aux[j++];  // first half of array is complete so coppying all values of second array
 
-            else if (j > hi) a[k] = aux[i++];
+            else if (j > hi) a[k] = aux[i++]; // second array finished first, so adding first array values directly
 
-            else if (less(aux[j], aux[i])) a[k] = aux[i++];
+            else if (less(aux[j], aux[i])) a[k] = aux[i++]; // comparing values of both array and addiing smaller one to the array
             else a[k] = aux[j++];
 
         }
