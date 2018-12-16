@@ -1,4 +1,4 @@
-package SortingAlgo;
+package SortingAlgo.insertionSort;
 
 public class InsertionSort {
     public static void main(String[] args) {

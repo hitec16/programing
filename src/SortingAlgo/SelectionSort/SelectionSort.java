@@ -1,4 +1,4 @@
-package SortingAlgo;
+package SortingAlgo.SelectionSort;
 
 public class SelectionSort {
 
