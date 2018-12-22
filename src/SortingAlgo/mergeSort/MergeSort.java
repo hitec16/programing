@@ -7,7 +7,8 @@ public class MergeSort {
 
     public static void main(String[] args) {
         Comparable[] a = {9, 8, 7, 6, 5, 4, 3, 2, 1};
-        sort(a);
+        sort(a); //This is merge sort with recursion
+//        sortBottomUpMerge(a); // this is merge sort without recursion
         System.out.println("Merge sort result: ");
         for (Comparable item : a) {
             System.out.println(item);
@@ -57,5 +58,16 @@ public class MergeSort {
         } else {
             return false;
         }
+    }
+
+//    Bottom up Merger sort which works without recursion only distadvantage is it takes extra space proportional to the size of the array.
+
+    public static void sortBottomUpMerge(Comparable[] a)
+    {
+        int N = a.length;
+        Comparable[] aux = new Comparable[N];
+        for (int sz = 1; sz < N; sz = sz+sz)
+            for (int lo = 0; lo < N-sz; lo += sz+sz)
+                mergeSort(a, aux, lo, lo+sz-1, Math.min(lo+sz+sz-1, N-1));
     }
 }
