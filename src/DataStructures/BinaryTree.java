@@ -54,29 +54,35 @@ public class BinaryTree {
         }
     }
 
-    public void delete(int value){
+    public void delete(int value) {
         root = delete(root, value);
     }
 
     private BinaryTreeNode delete(BinaryTreeNode subTreeRoot, int value) {
-        if(subTreeRoot == null){
+        if (subTreeRoot == null) {
             return subTreeRoot;
         }
 
-        if(value < subTreeRoot.getData()){
-            subTreeRoot.setLeftChild(delete(subTreeRoot,value));
-        }
-        else if(value > subTreeRoot.getData()){
-            subTreeRoot.setRightChild(delete(subTreeRoot,value));
-        }
-        else {
+        if (value < subTreeRoot.getData()) {
+            subTreeRoot.setLeftChild(delete(subTreeRoot.getLeftChild(), value));
+        } else if (value > subTreeRoot.getData()) {
+            subTreeRoot.setRightChild(delete(subTreeRoot.getRightChild(), value));
+        } else {
 //            cases 1 and 2: node to delete has 0 or 1 child(ren)
-            if(subTreeRoot.getLeftChild() == null){
+            if (subTreeRoot.getLeftChild() == null) {
                 return subTreeRoot.getRightChild();
-            }
-            else if(subTreeRoot.getRightChild() == null){
+            } else if (subTreeRoot.getRightChild() == null) {
                 return subTreeRoot.getLeftChild();
             }
+
+//            case 3 : node to be deleted has 2 childeren
+//            subtreeroot at this point the node we want to delete.
+//            We find the minimum value in the right subtree and replace its value with subtree.
+
+            subTreeRoot.setData(subTreeRoot.getRightChild().getMin());
+//            Delete the node that has the
+            subTreeRoot.setRightChild(delete(subTreeRoot.getRightChild(), subTreeRoot.getData()));
+
         }
 
         return subTreeRoot;

@@ -69,9 +69,6 @@ public class BinaryTreeNode {
         }
     }
 
-    public void delete(int value){
-
-    }
 
     public void inOrderTraversal() {
 
@@ -79,7 +76,7 @@ public class BinaryTreeNode {
             leftChild.inOrderTraversal();
         }
 
-        System.out.println(data + ", ");
+        System.out.print(data + ", ");
 
 
         if (rightChild != null) {
@@ -89,7 +86,7 @@ public class BinaryTreeNode {
     }
 
     public void preOrderTraversal() {
-        System.out.println(data + ", ");
+        System.out.print(data + ", ");
 
         if (leftChild != null) {
             leftChild.preOrderTraversal();
@@ -109,7 +106,7 @@ public class BinaryTreeNode {
         if (rightChild != null) {
             rightChild.postOrderTraversal();
         }
-        System.out.println(data + ", ");
+        System.out.print(data + ", ");
 
     }
 
