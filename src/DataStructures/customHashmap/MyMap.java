@@ -1,7 +1,7 @@
 package DataStructures.customHashmap;
 
 import DataStructures.customHashmap.Entry;
-
+/*https://www.geeksforgeeks.org/java-util-hashmap-in-java/*/
 public class MyMap<K, V> {
 
     private Entry<K, V>[] buckets;
@@ -23,7 +23,7 @@ public class MyMap<K, V> {
         Entry<K, V> existing = buckets[index];
         if (existing != null) {
             while (existing.getNext() != null) {
-                if (existing.getKey().equals(entry.getKey())) {
+                if (existing.equals(entry)) {
                     existing.setValue(entry.getValue());
                     return;
                 }
