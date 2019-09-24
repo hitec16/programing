@@ -1,21 +1,22 @@
 package reverseLinkedListInKGroup;
 
-// Java program to reverse a linked list in groups of
-// given size
-class LinkedList
-{
-    Node head; // head of list
+/* Java program to reverse a linked list in groups of
+ given size*/
+class LinkedList {
+    private Node head; // head of list
 
     /* Linked list Node*/
-    class Node
-    {
+    static class Node {
         int data;
         Node next;
-        Node(int d) {data = d; next = null; }
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
     }
 
-    Node reverse(Node head, int k)
-    {
+    private Node reverse(Node head, int k) {
         Node current = head;
         Node next = null;
         Node prev = null;
@@ -23,8 +24,7 @@ class LinkedList
         int count = 0;
 
         /* Reverse first k nodes of linked list */
-        while (count < k && current != null)
-        {
+        while (count < k && current != null) {
             next = current.next;
             current.next = prev;
             prev = current;
@@ -46,8 +46,7 @@ class LinkedList
     /* Utility functions */
 
     /* Inserts a new Node at front of the list. */
-    public void push(int new_data)
-    {
+    private void push(int new_data) {
 		/* 1 & 2: Allocate the Node &
 				Put in the data*/
         Node new_node = new Node(new_data);
@@ -60,20 +59,17 @@ class LinkedList
     }
 
     /* Function to print linked list */
-    void printList()
-    {
+    private void printList() {
         Node temp = head;
-        while (temp != null)
-        {
-            System.out.print(temp.data+" ");
+        while (temp != null) {
+            System.out.print(temp.data + " ");
             temp = temp.next;
         }
         System.out.println();
     }
 
     /* Driver program to test above functions */
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         LinkedList llist = new LinkedList();
 
 		/* Constructed Linked List is 1->2->3->4->5->6->
