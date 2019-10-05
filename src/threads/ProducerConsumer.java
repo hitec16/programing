@@ -6,21 +6,6 @@ public class ProducerConsumer {
 
     public static void main(String[] args) throws InterruptedException {
 
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        for (Integer i : list) {
-            System.out.println(i);
-//            list.remove(i);
-        }
-        for (Integer i : list) {
-            System.out.println(i);
-//            list.remove(i);
-        }
-
         final PC pc = new PC();
         Thread t1 = new Thread(() -> {
             try {
@@ -43,7 +28,7 @@ public class ProducerConsumer {
         t2.start();
 
         // t1 finishes before t2
-        t1.join();
+//        t1.join();
 //        t2.join();
     }
 
@@ -51,7 +36,7 @@ public class ProducerConsumer {
         LinkedList<Integer> list = new LinkedList<>();
         int capacity = 10;
 
-        public void produce() throws InterruptedException {
+        void produce() throws InterruptedException {
             int value = 0;
             while (true) {
                 synchronized (this) {
@@ -69,7 +54,7 @@ public class ProducerConsumer {
             }
         }
 
-        public void consume() throws InterruptedException {
+        void consume() throws InterruptedException {
             while (true) {
                 synchronized (this) {
                     if (list.isEmpty()) {
